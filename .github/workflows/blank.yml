@@ -21,7 +21,7 @@ jobs:
           cd $WORKSPACE_PATH
           docker build -t nodejs/v1 .
       - name: Login to Github Package Registry
-        run : echo "${{ secrets.DOCKER_PASSWORD }}" | docker login docker.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run : echo ${{ secrets.DOCKER_PASSWORD }} | docker login docker.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: push dockerhub
         run: |
           docker tag nodejs/v1:latest kukhanh0812/nginx-proxy:game-0.0.2
